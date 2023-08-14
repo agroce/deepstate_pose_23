@@ -4,39 +4,126 @@
 \author{Alex Groce }
 \date{August 2023}
 
-\newcommand{\um}{\texttt{universalmutator}}
+\newcommand{\ds}{\texttt{DeepState}}
 
 \begin{document}
 
-\section*{POSE: Phase II: Practical Extensible Mutation Generation and Management for Any Language}
+\section*{POSE: Phase II: Property-Driven Generalized Unit Fuzzing and Symbolic Execution for C and C++ Code}
 
 \subsection*{Overview}
 \vspace{-2mm}
 
-However, the growth of \um\ is limited by (1) its flat/informal leadership structure with only one author at the top who can approve new code contribution and (2) lack of documentation and support for development environment integeration, and (3) lack of external contributors from various associated communities.
-We propose to expand the open-source ecosystem of users, contributors, and developers of \um, by fixing these problems.
-In particular, we propose to work on creating (1) a written governance document with a new hierarchical leadership structure, (2) new documentation materials for onboarding new users/contributors, including translations and community standards to encourage diversity/inclusion, and (3) infrastructure for connecting \um\ to other tools.
-Furthermore, we plan to systematically evaluate the effects of our project on the \um\ ecosystem by measuring changes to important metrics (number of unique contributors, diversity of contributors. 
-The result of this project will be a self-sustaining open-source ecosystem for \um, which will allow it to grow into a locus for the widespread practical application of (and research on) mutation testing.
+
+The complexity of modern software systems, and the need for widely used libraries and other ``code infrastructure'' to be absolutely reliable, demands effective \emph{testing}.  Bugs in code have increasing impact on society at large (e.g., numerous security breaches traceable to incorrect code, and very high economic cost.  Testing remains to this day the single most effective means of finding bugs when their cost is low.   Moreover, fuzzing, originally limited largely to the software security world, is the most promising new approach to massively automated and effective testing of software.  Unfortunately, fuzzing has two major limitations: first, outside the world of cybersecurity, very few developers know how to use fuzzers.  Second, fuzzing tends to focus, due to its heritage from the security world of being used by outside analysts looking for memory-safety bugs that can be used to construct exploits, on finding program crashes, not probing more complex and subtle notions of correctness.  \ds\ is a tool that allows developers, without learning the idiosyncracies of the many individual fuzzers available, to use \emph{any} modern fuzzer to test their code.  More importantly, \ds\ allows users to apply fuzzing to property-driven testing, which can be thought of us \emph{generalized unit testing}.  Developers are seldom interested in crashes per se, vs. the functional correctness of code; unit testing is the method for checking correctness they are most familliar with.  \ds\ meets developers where they are, letting the use the power of fuzzing (or symbolic execution, when it scales) to test their code, by providing them with a more powerful version of the unit testing they already know how to use.
+
+However, the growth of \ds\ is limited by (1) its flat/informal leadership structure with only one author at the top who can approve new code contribution and (2) lack of documentation, (3) lack of external contributors from various associated communities, and (4) especially complexity of installation and integration with existing projects.
+We propose to expand the open-source ecosystem of users, contributors, and developers of \ds, by fixing these problems.
+In particular, we propose to work on creating (1) a written governance document with a new hierarchical leadership structure, (2) new documentation materials for onboarding new users/contributors, including translations and community standards to encourage diversity/inclusion, and (3) infrastructure for connecting \ds\ to other tools.
+Furthermore, we plan to systematically evaluate the effects of our project on the \ds\ ecosystem by measuring changes to important metrics (number of unique contributors, diversity of contributors. 
+The result of this project will be a self-sustaining open-source ecosystem for \ds, which will allow it to grow into a locus for the widespread practical application of generalized unit testing.
 
 \subsection*{Intellectual Merit.} 
 \vspace{-2mm}
-Modern software engineering for critical systems relies on automated tests to encode and enforce notions of correctness.  Determining whether such tests are sufficiently powerful to detect anomalous behavior is a fundamental problem of computer science; mutation testing, thanks to advances in computing power, has become the most promising practical method for this task.  This project will create new documentation expanding the \um\ ecosystem, making it possible for developers to apply mutation testing in novel languages or using project-specific operators, and enabling the development of novel tooling for novel applications of mutants to software engineering tasks.  More researchers and developers will be able to use \um\ to explore and enhance the power of mutants to guide software development.
+Testing of self-contained software modules by \emph{unit testing} performed by developers is one of the backbones of the modern software development process.  However, manual unit testing is seriously limited in effectiveness by 1) the tendency of assumptions developers make in writing code to creep into how they test code and 2) the extreme slowness of human construction of test cases compared to modern automated testing methods.  \emph{Fuzzing} is an extremely powerful method for exploring the behavior of code to find bugs, but is seldom used by ``normal'' developers for testing their code, and fuzzing tools are focused on finding crash-inducing bugs that lead to exploits.  Bridging the gap between normal developers doing unit testing and the power of fuzzing will enable a wide variety of new research lines in software testing and specification.
 
 \subsection*{Broader Impacts}
 \vspace{-2mm}
 
 Efficient software is increasingly important in our modern digital/networked society since ``software is eating the world'' and this process shows no sign of stopping or even decelerating. 
-Our project will benefit every area of society where software is employed since our project aims to improve a fundamental tool for effective software testing, \um..
-Furthermore, because our project emphasizes documentation and translations for onboarding new users/contributors, our project will result in more developers, and more diverse developers, becoming aware of this powerful tool for mutation-based analyses of code and tests.
+Our project will benefit every area of society where software is employed since our project aims to improve a fundamental tool for effective software testing, \ds.
+Furthermore, because our project emphasizes documentation and translations for onboarding new users/contributors, our project will result in more developers, and more diverse developers, becoming aware of this powerful tool for applying fuzzing to unit testing.
 
 \paragraph{Keywords:}
-CISE; mutation testing; software testing infrastructure; software specification
+CISE; fuzzing; unit testing; property-based testing; generalized unit testing
 
 \pagenumbering{gobble}
 \newpage  
 %\pagenumbering{arabic}
 \pagenumbering{gobble}
 \section{Context of the Open-Source Ecosystem}%section required by call, otherwise RWR
+
+
+\vspace{-2mm}\subsection{Problem and societal need that will be addressed: construction of effective tests for software systems}
+
+There is no need to argue the massive importance of computer software to almost every facet of modern life, economic, political, and personal.  From the underpinnings of the energy infrastructure to the methods people use to communicate with friends and family, software systems support human life.  Faulty software has vast economic costs, and increasingly may have potential to inflict serious loss of life.  \emph{Software testing} remains the most widely used and scalable approach to finding and preventing serious bugs in software systems.  However, software testing has always faced a fundamental problem: humans writing tests will tend to be influence by the same assumptions and limitations that result in the presence of bugs, even when those humans are different from those who wrote the code, and especially when the same humans write and test code, as is usual with unit tests.
+
+
+\subsection{\ds,  a practical, extensible mutation generation and management tool for any language}
+
+\paragraph{License.}
+
+\paragraph{Novelty of \ds: a single tool for mutation in any language and tool environment.}
+
+
+
+\subsection{A substantial base of users and contributors already exists}
+
+\subsubsection{Letters of collaboration from users and contributors in academia and industry}
+
+
+\subsection{Problems with current development model, dissemination methods, and testing}
+
+\subsubsection{Problems with flat development model}
+
+\subsubsection{Problems with the methods of dissemination}
+
+\subsubsection{Problems with the testing methods and infrastructure}
+
+\subsection{Justification that the OSE will generate impact in the current technological landscape, that NSF support is critical, and vision for long-term sustainability}
+
+\section{Proposed project objectives and activities}
+
+\subsection{Modernizing the contribution process and defining explicit governance}
+
+
+\paragraph{Writing explicit governance documentation to facilitate a sustainable organizational structure}
+
+\paragraph{Creating new roles to facilitate hierarchical PR submission/review}
+
+\paragraph{Creating new release management documentation and roles to facilitate more frequent releases}
+
+\subsection{Improving outreach and onboarding for new users and developers}
+
+\paragraph{Creating documentation to support the onboarding of new users and developers.} \label{sec:doc}
+
+\subsection{Improved testing methods and infrastructure}
+
+\paragraph{Benchmark comparisons with similar software}
+
+
+\section{Evaluation Plan} \label{sec:eval}
+
+\subsection{Formative evaluation}
+
+
+\subsection{Summative evaluation}
+
+\section{Project team}
+
+
+\textbf{A computer science master student at NAU} will be recruited to work as a graduate research assistant (GRA) during the academic year (20 hours per week), and during the summer (40 hours per week, 3 months).
+The student will be responsible for documentation, testing, and project evaluation.
+
+\section{Broader Impacts}
+
+
+
+\section{Results from Prior NSF Support}
+
+
+
+\textbf{Co-PI Gerosa} was awarded a grant entitled: Gender-Inclusive Open Source through Gender-Inclusive Tools (IIS-1900903 \$852K, 8/1/19 - 7/31/23). 
+\textbf{IM:} This work develops best practices and guidelines for promoting diversity and inclusivity in OSS tools. 
+\textbf{BI:} Inclusive tools promote more equitable opportunities for women and men in OSS. 
+\textbf{Relation:} We will use the results from this award to promote a gender-inclusive  \ds.
+\textbf{Publications:} Several publications have been produced under this award~\cite{balali2020recommending,dias2021makes,silva2020google,gerosa2021shifting,silva2020theory,trinkenreich2020hidden,chatterjee2021aid,mendez2019gendermag,stumpf2020gender,guizani2020gender,hilderbrand2020engineering,padala2020gender,wessel2020effects}, and others are under review or preparation, with~\cite{balali2020recommending} and~\cite{wessel2020effects} receiving awards. 
+
+
+\newpage
+%\pagenumbering{roman}
+%\setcounter{page}{1} 
+%\bibliographystyle{unsrt}
+\bibliographystyle{plain}
+\bibliography{bibliography}
 
 \end{document}
